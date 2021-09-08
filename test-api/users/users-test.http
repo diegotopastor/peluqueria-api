@@ -1,0 +1,15 @@
+### CREAR USUARIOS
+POST http://diegopastor.local:3000/users/add
+Content-Type: application/json
+token: dc7a478f96aeadf4563c335c3a1a33aef2926da1
+
+{
+    "name": "REST CLIENT",
+    "email": "prueba@gmail.com",
+    "password": "123456"
+}
+
+### LISTAR USUARIOS
+GET http://127.0.0.1:3000/users/get_list
+Content-Type: application/json
+token: dc7a478f96aeadf4563c335c3a1a33aef2926da1
