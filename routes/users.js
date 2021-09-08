@@ -72,6 +72,7 @@ const salt = "EnUnLugarDeLaMancha"
 
 				if(req.body?.name){ tochange.name = req.body.name; }
 				if(req.body?.email){ tochange.email = req.body.email; }
+				if(req.body?.rol){ tochange.rol = req.body.rol; }
 				if(req.body?.password){ tochange.password = req.body.password; }
 
 				const result = await db('users')
