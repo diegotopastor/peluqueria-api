@@ -45,7 +45,7 @@ const salt = "EnUnLugarDeLaMancha"
 	// Obtenemos un listado de usuarios (empleados)
 		router.get('/get_list', [authtoken], async (req, res)=>{
 
-			const result = await db.select("*").from("users").where("ID_company", res.info.ID_company);
+			const result = await db.select('ID', 'name', 'email', db.raw('DATE_FORMAT(created, "%d-%m-%Y") as created')).from("users").where("ID_company", res.info.ID_company);
 
 			if(result.length == 0){
 				return res.json({ status: false, error: "No existe registros todavía" });

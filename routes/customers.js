@@ -40,7 +40,7 @@ const router = express.Router();
 	// Obtenemos un listado de todos los clientes
 		router.get('/get_list', [authtoken], async (req, res)=>{
 
-			const result = await db.select("*").from("customers").where("ID_company", res.info.ID_company);
+			const result = await db.select('ID', 'name', 'phone', 'email', db.raw('DATE_FORMAT(created, "%d-%m-%Y") as created')).from("customers").where("ID_company", res.info.ID_company);
 
 			if(result.length == 0){
 				return res.json({ status: false, error: "No existe registros todavía" });
@@ -84,6 +84,8 @@ const router = express.Router();
 				if(req.body?.surname){ tochange.surname = req.body.surname; }
 				if(req.body?.email){ tochange.email = req.body.email; }
 				if(req.body?.phone){ tochange.phone = req.body.phone; }
+				if(req.body?.content_type){ tochange.content_type = req.body.content_type; }
+				if(req.body?.notes){ tochange.notes = req.body.notes; }
 
 				const result = await db('customers')
 									.update(tochange)
